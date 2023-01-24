@@ -1,4 +1,7 @@
 # gather
+Objective: Gather is to be a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The app will use the Google
+Calendar API to fetch upcoming events.
+
 
 FEATURE 2: SHOW/HIDE AN EVENT’S DETAILS
 Scenario 1: An event element is collapsed by default.
