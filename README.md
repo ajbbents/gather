@@ -50,3 +50,4 @@ Scenario 1: Show a chart with the number of upcoming events in each city.
     1.	Given: A city and time range were specified
     When: The user chooses a chart view
     Then: The events are plotted in a chart
+# gather
