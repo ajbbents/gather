@@ -17,6 +17,14 @@ describe('<NumberOfEvents /> component', () => {
   test('default number of event value is 10', () => {
     expect(NumberOfEventsWrapper.find('input.num').prop('type')).toBe('number');
     expect(NumberOfEventsWrapper.state('num')).toBe(10);
-  })
+  });
+
+  test('number of events value can be changed', () => {
+    expect(NumberOfEventsWrapper.state('num')).toBe(10);
+    NumberOfEventsWrapper.find('input.num').simulate('change', {
+      target: { value: 7 }
+    });
+    expect(NumberOfEventsWrapper.state('num')).toBe(7);
+  });
 
 });
