@@ -32,4 +32,10 @@ describe('<Event /> component', () => {
     expect(eventLocation.text()).toBe(`@${event.summary} | ${event.location}`);
   });
 
+  test('Renders button show details when collapsed', () => {
+    const detailsButton = EventWrapper.find('button.details-button');
+    expect(detailsButton).toHaveLength(1);
+    expect(detailsButton.text()).toBe('show details');
+  });
+
 });
