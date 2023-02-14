@@ -10,7 +10,9 @@ class Event extends Component {
   };
 
   render() {
+
     const { event } = this.props;
+    const { collapsed } = this.state;
 
     return (
       <div className='event'>
@@ -24,6 +26,17 @@ class Event extends Component {
           {`@${event.summary} | ${event.location}`}
         </p>
 
+        {!collapsed && (
+          <div className='event-details'>
+            <h2 className='about'>
+              About the event:
+            </h2>
+            <a className='link' href={event.htmlLink} target='_blank' rel='noopener noreferrer'>
+              See details on Google Cal
+            </a>
+            <p className='description'>
+              {event.description}
+            </p>
           </div>
         )}
 
