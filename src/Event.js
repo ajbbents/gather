@@ -18,6 +18,12 @@ class Event extends Component {
 
           </div>
         )}
+
+        <button className='details-button' onClick={() => this.toggleDetails()}>
+          {collapsed ? 'show' : 'hide'} details
+        </button>
+      </div>
+    );
   }
 }
 
