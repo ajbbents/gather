@@ -7,4 +7,10 @@ import Event from '../Event';
     expect(EventWrapper).toBeDefined();
   });
 
+  test('renders the summary as an h1', () => {
+    const summary = EventWrapper.find('h1.summary');
+    expect(summary).toHaveLength(1);
+    expect(summary.text()).toBe(event.summary);
+  });
+
 });
