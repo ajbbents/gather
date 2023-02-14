@@ -21,6 +21,9 @@ class NumberOfEvents extends Component {
             className='num'
             type='number'
             value={num}
+            onChange={(event) => {
+              this.changeNum(event.target.value);
+            }}
           >
           </input>
         </label>
