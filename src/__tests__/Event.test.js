@@ -3,6 +3,13 @@ import { shallow } from 'enzyme';
 import { mockData } from '../mock-data';
 import Event from '../Event';
 
+describe('<Event /> component', () => {
+  let EventWrapper, event;
+  beforeAll(() => {
+    event = mockData[0];
+    EventWrapper = shallow(<Event event={event} />);
+  });
+
   test('renders the event component', () => {
     expect(EventWrapper).toBeDefined();
   });
