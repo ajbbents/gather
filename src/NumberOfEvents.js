@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 class NumberOfEvents extends Component {
   state = { num: 10 };
 
-  changeNum = (value) => {
-    this.setState({ num: value });
-  };
-
   componentDidMount() {
     this.setState({ num: this.props.num || 10 });
+  };
+
+  changeNum = (value) => {
+    this.setState({ num: value });
   };
 
   render() {
