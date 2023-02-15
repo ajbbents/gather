@@ -27,4 +27,10 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.state('num')).toBe(7);
   });
 
+  test('rendered number of events is accurate to request', () => {
+    const NumberOfEventsWrapperWithProp = shallow(
+      <NumberOfEvents num={7} updateNumberOfEvents={() => { }} />
+    );
+    expect(NumberOfEventsWrapperWithProp.state('num')).toBe(7);
+  });
 });
