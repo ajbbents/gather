@@ -58,6 +58,21 @@ const removeQuery = () => {
   }
 };
 
+const getToken = async (code) => {
+  const encodeCode = encodeURIComponent(code);
+  const { access_token } = await fetch(
+    'https://h3dqhxwslk.execute-api.us-east-2.amazonaws.com/dev/api/token' + '/' + encodeCode
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => error);
+
+  access_token && localStorage.setItem("access_token", access_token);
+
+  return access_token;
+};
+
 export const getEvents = async () => {
   NProgress.start();
 
@@ -79,21 +94,4 @@ export const getEvents = async () => {
     NProgress.done();
     return result.data.events;
   }
-};
-
-
-
-const getToken = async (code) => {
-  const encodeCode = encodeURIComponent(code);
-  const { access_token } = await fetch(
-    'https://h3dqhxwslk.execute-api.us-east-2.amazonaws.com/dev/api/token' + '/' + encodeCode
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((error) => error);
-
-  access_token && localStorage.setItem("access_token", access_token);
-
-  return access_token;
 };
