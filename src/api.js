@@ -67,26 +67,6 @@ export const getEvents = async () => {
   }
 };
 
-export const getAccessToken = async () => {
-  const accessToken = localStorage.getItem('access_token');
-  const tokenCheck = accessToken && (await checkToken(accessToken));
-
-  if (!accessToken || tokenCheck.error) {
-    await localStorage.removeItem("access_token");
-    const searchParams = new URLSearchParams(window.location.search);
-    const code = await searchParams.get("code");
-    if (!code) {
-      const results = await axios.get(
-        "https://h3dqhxwslk.execute-api.us-east-2.amazonaws.com/dev/api/get-auth-url"
-      );
-      const { authUrl } = results.data;
-      return (window.location.href = authUrl);
-    }
-    return code && getAccessToken(code);
-  }
-  return accessToken;
-};
-
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
     var newurl =
