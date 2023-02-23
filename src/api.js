@@ -53,7 +53,10 @@ const removeQuery = () => {
       window.location.pathname;
     window.history.pushState("", "", newurl);
   } else {
-    newurl = window.location.protocol + "//" + window.location.host;
+    newurl =
+      window.location.protocol +
+      "//" +
+      window.location.host;
     window.history.pushState("", "", newurl);
   }
 };
@@ -61,7 +64,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-    'https://h3dqhxwslk.execute-api.us-east-2.amazonaws.com/dev/api/token' + '/' + encodeCode
+    `https://h3dqhxwslk.execute-api.us-east-2.amazonaws.com/dev/api/token/${encodeCode}`
   )
     .then((res) => {
       return res.json();
