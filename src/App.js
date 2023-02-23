@@ -17,15 +17,26 @@ class App extends Component {
       const locationEvents = (location === 'all') ?
         events : events.filter((event) => event.location === location);
       this.setState({
-        events: locationEvents
+        events: locationEvents.slice(0, this.state.numberOfEvents)
       });
     });
   }
 
-  componentDidMount() {
+  updateNumberOfEvents(number) {
+    this.setState({
+      numberOfEvents: number
+    });
+  }
+
+  async componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
-      this.setState({ events, locations: extractLocations(events) });
+      if (this.mounted) {
+        this.setState({
+          events: events.slice(0, this.state.numberOfEvents),
+          locations: extractLocations(events),
+        });
+      }
     });
   }
 
@@ -34,6 +45,8 @@ class App extends Component {
   }
 
   render() {
+    const { events, locations } = this.state;
+
     return (
       <div className="App">
         <CitySearch
